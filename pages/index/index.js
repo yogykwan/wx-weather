@@ -22,6 +22,8 @@ Page({
     nowWeather: "",
     nowWeatherBackground: "",
     forecast: [],
+    todayDate: "",
+    todayTemp: "",
   },
   onLoad() {
     this.getNow();
@@ -37,15 +39,13 @@ Page({
       data: {
         city: "beijing"
       },
-      header: {
-        "content-type": "application/json",
-      },
       success: res => {
         const result = res.data.result;
         console.log(result);
 
         this.setNow(result.now);
         this.setForecast(result.forecast);
+        this.setToday(result.today)
       },
       complete: () => {
         callback && callback();
@@ -72,7 +72,7 @@ Page({
     for (let key in forecastRes) {
       const item = forecastRes[key];
       forecast.push({
-        time: (nowHour + item.id * 3) % 24 + "时",
+        time: `${(nowHour + item.id * 3) % 24} 时`,
         iconPath: "/images/" + item.weather + "-icon.png",
         temp: item.temp + "°",
       });
@@ -82,5 +82,17 @@ Page({
     this.setData({
       forecast: forecast,
     });
+  },
+  setToday(today) {
+    const date = new Date();
+    this.setData({
+      todayTemp: `${today.minTemp}° - ${today.maxTemp}°`,
+      todayDate: `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} 今天`
+    });
+  },
+  onTapDayWeather() {
+    wx.navigateTo({
+      url: "/pages/list/list",
+    })
   }
 })
