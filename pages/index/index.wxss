@@ -14,8 +14,38 @@
 
 .weather-wrapper {
   position: relative;
-  padding-top: 174rpx;
+  padding-top: 20rpx;
   padding-bottom: 250rpx;
+}
+
+.location-wrapper{
+  margin-bottom: 60rpx;
+  font-size: 30rpx;
+  line-height: 42rpx;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.location-icon {
+  margin-right: 10rpx;
+  width: 21rpx;
+  height: 30rpx;  
+}
+
+.location-text{
+  opacity: 0.5;
+  height: 42rpx;
+}
+
+.location-tips{
+  margin-top: 10rpx;
+  text-align: center;
+  opacity: 0.5;
+  height: 42rpx;
 }
 
 .weather-bg {

@@ -5,8 +5,12 @@ const dayMap = [
 Page({
   data: {
     weekWeather: [],
+    city: "",
   },
-  onLoad() {
+  onLoad(options) {
+    this.setData({
+      city: options.city
+    });
     this.getWeekWeather();
   },
   onPullDownRefresh() {
