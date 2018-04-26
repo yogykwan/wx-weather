@@ -1,4 +1,4 @@
-.temperature {
+.temp {
    text-align: center;
    font-size: 200rpx;
    line-height: 280rpx;
